@@ -1,0 +1,264 @@
+/* /* nav {
+  background-color: #333;
+  overflow: hidden;
+} */
+header h1 {
+  color: black;
+  text-shadow: 2px 2px 2px rgb(104, 102, 107);
+  padding-top: 10px;
+  padding-left: 30px;
+  font-family: "Gochi Hand", cursive;
+  font-size: 40px;
+}
+a[href] {
+  color: #000;
+  text-decoration: none;
+}
+.navbar a {
+  padding: 3%;
+  position: relative;
+  left: 35%;
+}
+.wrap {
+  width: 25%;
+  position: absolute;
+  top: 15%;
+  left: 1%;
+  margin: 1.5%;
+  /* transform: translate(-50%, -50%); */
+}
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 1px solid gray;
+  border-right: none;
+  padding: 5px;
+  height: 30px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.searchTerm:focus {
+  color: #00b4cc;
+}
+
+.searchButton {
+  width: 34px;
+  height: 30px;
+  border: 1px solid gray;
+  border-left: none;
+  background: rgb(255, 255, 255);
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  /* font-size: 20px; */
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+body {
+  background-color: #bad7d7;
+}
+.bg h1 {
+  padding: 2em 1em 1em;
+  text-align: center;
+  position: relative;
+  color: #e7baa1;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-family: "Gochi Hand", cursive;
+  font-size: 70px;
+  text-shadow: 2px 2px 3px rgb(96, 53, 9);
+}
+.bg img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.bg button {
+  border: rgb(96, 53, 9) solid;
+  background-color: #ffffff8e;
+  border-width: 3px;
+  border-radius: 30px;
+  padding: 1%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  height: 70px;
+  width: 170px;
+  margin: -60px -50px;
+  position: relative;
+  top: 50%;
+  left: 47.5%;
+  font-family: "Gochi Hand", cursive;
+}
+
+.bg button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  color: rgb(96, 53, 9);
+  font-weight: bold;
+}
+
+.bg button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.bg button:hover span {
+  padding-right: 25px;
+}
+
+.bg button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.container {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#welcome {
+  text-align: center;
+  color: black;
+  text-shadow: 2px 2px 2px rgb(104, 102, 107);
+  padding-top: 5px;
+  font-family: "Gochi Hand", cursive;
+  font-size: 40px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  box-sizing: border-box;
+  margin: 2%;
+}
+.login {
+  margin-left: 15%;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.signup {
+  margin-left: 15%;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.vl {
+  border-left: 1px solid #253274;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 20%;
+}
+/* input[type="email"],
+input[type="password"],
+input[type="text"],
+textarea {
+  padding: 10px;
+  width: 50%;
+  margin: 20px;
+  resize: vertical;
+}
+label {
+  font-size: large;
+  display: inline-block;
+} */
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans); */
+/* 
+body {
+  background: #f2f2f2;
+  font-family: "Open Sans", sans-serif;
+} */
+
+@media screen and (max-width: 600px) {
+  .wrapper,
+  .vl,
+  .signup,
+  .login {
+    display: grid;
+    grid-template-columns: 100%;
+    box-sizing: border-box;
+    margin: 2%;
+    border: none;
+    margin-top: 5%;
+    margin-left: 5%;
+  }
+}
+input[type="text"],
+select,
+textarea,
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  font-size: large;
+  font-weight: bold;
+  color: #253274;
+}
+
+input[type="submit"] {
+  background-color: #7189ff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5%;
+  float: left;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 5%;
+}
+
+.col-60 {
+  float: left;
+  width: 60%;
+  margin-top: 6%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
