@@ -19,6 +19,20 @@ a[href] {
   position: relative;
   left: 35%;
 }
+.navbar a:hover{
+  text-decoration-line: underline;
+}
+
+.navbar a:active{
+  text-decoration-line: underline;
+}
+.navbar a:active i{
+  text-decoration-line: underline;
+}
+.navbar a:hover i{
+  text-decoration-line: underline;
+}
+
 .wrap {
   width: 25%;
   position: absolute;
@@ -261,4 +275,44 @@ input[type="submit"]:hover {
   content: "";
   display: table;
   clear: both;
+}
+.image-container{
+  padding: 20px 50px;
+  
+  width: 100%;
+  height:auto;
+}
+.col-50 {
+  padding:5px 50px;
+  float: left;
+  width: 100%;
+  top: 20%; 
+}
+.col-100 {
+  padding:50px;
+  width: 30%;
+  margin-top: -1.8%;
+  top: 20%;
+}
+.row-50:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.cols{
+  padding:0px 10px 0px 500px; 
+}
+
+input[type="button"] {
+  border-radius: 10px;
+  background-color: #ffffff8e;
+  padding: 5px 10px;
+  border: 2px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  font-family: "PT Sans Narrow", sans-serif;;
+}
+input[type="button"]:hover {
+  background-color:gray;
 }
