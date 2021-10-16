@@ -184,10 +184,10 @@ body {
 .vl {
   border-left: 1px solid #253274;
   height: 100%;
-  position: absolute;
-  left: 50%;
-  margin-left: -3px;
-  top: 20%;
+  position: relative;
+  /* left: 30%; */
+  /* margin-left: -3px; */
+  top: 50%;
 }
 /* input[type="email"],
 input[type="password"],
