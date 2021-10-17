@@ -56,6 +56,9 @@ if(isset($_POST['submit']) && !empty($_FILES["file"]["name"])){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2c558ff8c9.js" crossorigin="anonymous"></script>
     <style>
     section {
       padding: 60px 0;
@@ -71,6 +74,10 @@ if(isset($_POST['submit']) && !empty($_FILES["file"]["name"])){
   font-family: "Gochi Hand", cursive;
   font-size: 40px;
 }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
   </style>
   </head>
   <body>
@@ -92,7 +99,9 @@ if(isset($_POST['submit']) && !empty($_FILES["file"]["name"])){
             <label for="productname" class="form-label">Name of the Product:</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
-                <i class="bi bi-bag-fill text-secondary"></i>
+              <!-- <i class="material-icons text-secondary md-18">sell</i> -->
+              
+              <i class="fas fa-bone text-secondary"></i>
               </span>
               <input type="text" id="productname" name="productname" class="form-control" placeholder="e.g. Dog food" />
             </div>
@@ -107,23 +116,31 @@ if(isset($_POST['submit']) && !empty($_FILES["file"]["name"])){
             <label for="price" class="form-label">Pricing Details:</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
-                <i class="bi bi-cash-coin text-secondary"></i>
+              <i class="material-icons md-18 text-secondary">
+currency_rupee
+</i>
               </span>
               <input class="form-control" type="text" id="price" name="price" pattern="\d+" placeholder="e.g. &#8377; 300"
                 />
             </div>
           </div>
             <div class="col-lg-6">
-              <label class="custom-file-label form-label" for="file">Add a Picture:</label>
+            <label class="custom-file-label form-label" for="file">Add a Picture:</label>
             <div class="custom-file mb-4 input-group">
+            <span class="input-group-text">
+              <i class="material-icons md-18 text-secondary">
+add_a_photo
+</i>
+              </span>
               <input class="form-control custom-file-input" type="file" id="file" name="file" required>
               
             </div>
+              
             
             <label for="description" class="form-label">Description:</label>
             <div class="input-group mb-4">
               <span class="input-group-text">
-                <i class="bi bi-chat-right-quote-fill text-secondary"></i>
+              <i class="material-icons text-secondary md-18">description</i>
               </span>
               <textarea class="form-control" name="description" id="description" rows="5"></textarea>
 

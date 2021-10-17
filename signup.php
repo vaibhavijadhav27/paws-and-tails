@@ -51,6 +51,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
     <style>
     section {
       padding: 60px 0;
@@ -134,7 +136,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <label for="address" class="form-label">Address:</label>
             <div class="input-group mb-4">
               <span class="input-group-text">
-                <i class="bi bi-house-fill text-secondary"></i>
+              <i class="material-icons text-secondary">place</i>
               </span>
               <textarea required class="form-control" name="address" id="address" rows="4"></textarea>
 
