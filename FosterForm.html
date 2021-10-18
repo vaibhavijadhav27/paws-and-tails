@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paws and Tails | Request for Adoption</title>
+  <title>Paws and Tails | Request for Foster</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -48,7 +48,7 @@
     <div class="container-lg">
 
       <div class="text-center">
-        <h2>Request to put up Dog for Adoption</h2>
+        <h2>Request to put up Dog for Foster</h2>
 
       </div>
       <div class="row justify-content-center my-5">
@@ -71,7 +71,7 @@
               <input type="text" id="breed" name="breed" class="form-control" placeholder="e.g. Indie"/>
             </div>
                        
-            <label for="price" class="form-label">Age:</label>
+            <label for="age" class="form-label">Age:</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
                 <i class="material-icons text-secondary md-18">cake</i>
@@ -80,7 +80,19 @@
                 />
             </div>
           </div>
+
             <div class="col-lg-6">
+                <label for="pay" class="form-label">Payment Details:</label>
+            <div class="mb-4 input-group">
+              <span class="input-group-text">
+                <i class="material-icons md-18 text-secondary">
+                    currency_rupee
+                    </i>
+              </span>
+              <input class="form-control" type="text" id="pay" name="pay" pattern="\d+" placeholder="e.g. &#8377;300/Day"
+                />
+            </div>
+        
               <label class="custom-file-label form-label" for="image">Add a Picture:</label>
             <div class="custom-file mb-4 input-group">
               <span class="input-group-text">
@@ -97,7 +109,7 @@
               <span class="input-group-text">
                 <i class="material-icons text-secondary md-18">description</i>
               </span>
-              <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+              <textarea class="form-control" name="description" id="description" rows="3"></textarea>
 
             </div>
             </div>

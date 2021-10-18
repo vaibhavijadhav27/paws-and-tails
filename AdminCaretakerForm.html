@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paws and Tails | Request for Adoption</title>
+  <title>Paws and Tails | Health and Train</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -37,6 +37,10 @@
   .material-icons.md-24 { font-size: 24px; }
   .material-icons.md-36 { font-size: 36px; }
   .material-icons.md-48 { font-size: 48px; }
+  .round{
+      border-radius: 20px;
+      border: 1px solid gray
+  }
     </style>
     </head>
     <body>
@@ -46,41 +50,86 @@
 
   <section id="contact">
     <div class="container-lg">
-
+        <div>
+            <h5 class="text-muted">You are looking to add to?</h5>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <input class="btn btn-light btn-sm round" onclick="location.href = 'AdminVetForm.html'"
+            type="reset"
+            value="&nbsp;Vets&nbsp;"
+            />
+            <input class="btn btn-light btn-sm round" onclick="location.href = 'AdminTrainerForm.html'"
+            type="reset"
+            value="Trainers"
+            
+            />
+            <input class="btn btn-light btn-sm round" onclick="location.href = 'AdminWalkerForm.html'"
+            type="reset"
+            value="Walkers"
+          />
+          <input class="btn btn-secondary btn-md round" onclick="location.href = 'AdminCaretakerForm.html'"
+            type="reset"
+            value="Care Takers"
+          />
+          </div>
+        
       <div class="text-center">
-        <h2>Request to put up Dog for Adoption</h2>
-
+        <h2>Add professional</h2>
+        
       </div>
       <div class="row justify-content-center my-5">
         <div class="col-lg-6">
 
           <form action="./AdminAddProductForm.php" method="post">
-            <label for="dogname" class="form-label">Name of the Dog:</label>
+            <label for="dogname" class="form-label">Name of the Caretaker:</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
-                <i class="fas fa-dog text-secondary"></i>
-                
+                <i class="bi bi-person-fill text-secondary"></i>
               </span>
-              <input type="text" id="dogname" name="dogname" class="form-control" placeholder="e.g. Bruno" />
+              <input type="text" id="name" name="name" class="form-control" placeholder="e.g. Amit Shaikh" />
             </div>
-            <label for="breed" class="form-label">Breed:</label>
-            <div class="mb-4 input-group">
-              <span class="input-group-text">
-                <i class="material-icons text-secondary md-18">pets</i>
-              </span>
-              <input type="text" id="breed" name="breed" class="form-control" placeholder="e.g. Indie"/>
-            </div>
+  
                        
-            <label for="price" class="form-label">Age:</label>
+            <label for="age" class="form-label">Age:</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
                 <i class="material-icons text-secondary md-18">cake</i>
               </span>
-              <input class="form-control" type="text" id="age" name="age" pattern="\d+" placeholder="e.g. 3 months"
+              <input class="form-control" type="text" id="age" name="age" pattern="\d+" placeholder="e.g. 35 years"
                 />
             </div>
+         
+
+          <label for="age" class="form-label">Experience:</label>
+            <div class="mb-4 input-group">
+              <span class="input-group-text">
+                <i class="material-icons text-secondary md-18">stars</i>
+              </span>
+              <input class="form-control" type="text" id="experience" name="experience" pattern="\d+" placeholder="e.g. 5 years"
+                />
+            </div>
+          
+          <label for="phone" class="form-label">Phone Number</label>
+          <div class="mb-4 input-group">
+            <span class="input-group-text">
+              <i class="bi bi-telephone-fill text-secondary"></i>
+            </span>
+            <input required class="form-control" type="text" id="phone" name="phone" placeholder="eg. 9652XXXXX0"
+              maxlength="10" minlength="10">
           </div>
+        </div>
             <div class="col-lg-6">
+                <label for="pay" class="form-label">Fee:</label>
+            <div class="mb-4 input-group">
+              <span class="input-group-text">
+                <i class="material-icons md-18 text-secondary">
+                    currency_rupee
+                    </i>
+              </span>
+              <input class="form-control" type="text" id="fee" name="fee" pattern="\d+" placeholder="e.g. &#8377;12000"
+                />
+            </div>
+        
               <label class="custom-file-label form-label" for="image">Add a Picture:</label>
             <div class="custom-file mb-4 input-group">
               <span class="input-group-text">
@@ -104,7 +153,7 @@
         
 
         <div class="mb-4 text-center">
-          <button type="submit" class="btn btn-secondary">Submit for Review</button>
+          <button type="submit" class="btn btn-secondary">Add Caretaker</button>
         </div>
 
         </form>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paws and Tails | Request for Adoption</title>
+  <title>Paws and Tails | Get a Dog</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -37,6 +37,10 @@
   .material-icons.md-24 { font-size: 24px; }
   .material-icons.md-36 { font-size: 36px; }
   .material-icons.md-48 { font-size: 48px; }
+  .round{
+      border-radius: 20px;
+      border: 1px solid gray
+  }
     </style>
     </head>
     <body>
@@ -46,10 +50,28 @@
 
   <section id="contact">
     <div class="container-lg">
-
+        <div>
+            <h5 class="text-muted">You are looking to add to?</h5>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <input class="btn btn-secondary btn-md round" onclick="location.href = 'AdminBuyForm.html'"
+            type="reset"
+            value="&nbsp;Buy&nbsp;"
+            />
+            <input class="btn btn-light btn-sm round" onclick="location.href = 'AdminAdoptForm.html'"
+            type="reset"
+            value="Adopt"
+            
+            />
+            <input class="btn btn-light btn-sm round" onclick="location.href = 'AdminFosterForm.html'"
+            type="reset"
+            value="Foster"
+          />
+          </div>
+        
       <div class="text-center">
-        <h2>Request to put up Dog for Adoption</h2>
-
+        <h2>Add Dog to Buying Section</h2>
+        
       </div>
       <div class="row justify-content-center my-5">
         <div class="col-lg-6">
@@ -61,17 +83,17 @@
                 <i class="fas fa-dog text-secondary"></i>
                 
               </span>
-              <input type="text" id="dogname" name="dogname" class="form-control" placeholder="e.g. Bruno" />
+              <input type="text" id="dogname" name="dogname" class="form-control" placeholder="e.g. Todd" />
             </div>
             <label for="breed" class="form-label">Breed:</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
                 <i class="material-icons text-secondary md-18">pets</i>
               </span>
-              <input type="text" id="breed" name="breed" class="form-control" placeholder="e.g. Indie"/>
+              <input type="text" id="breed" name="breed" class="form-control" placeholder="e.g. Golden Retriever"/>
             </div>
                        
-            <label for="price" class="form-label">Age:</label>
+            <label for="age" class="form-label">Age:</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
                 <i class="material-icons text-secondary md-18">cake</i>
@@ -80,7 +102,19 @@
                 />
             </div>
           </div>
+
             <div class="col-lg-6">
+                <label for="pay" class="form-label">Price Details:</label>
+            <div class="mb-4 input-group">
+              <span class="input-group-text">
+                <i class="material-icons md-18 text-secondary">
+                    currency_rupee
+                    </i>
+              </span>
+              <input class="form-control" type="text" id="pay" name="pay" pattern="\d+" placeholder="e.g. &#8377;20000"
+                />
+            </div>
+        
               <label class="custom-file-label form-label" for="image">Add a Picture:</label>
             <div class="custom-file mb-4 input-group">
               <span class="input-group-text">
@@ -97,14 +131,14 @@
               <span class="input-group-text">
                 <i class="material-icons text-secondary md-18">description</i>
               </span>
-              <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+              <textarea class="form-control" name="description" id="description" rows="3"></textarea>
 
             </div>
             </div>
         
 
         <div class="mb-4 text-center">
-          <button type="submit" class="btn btn-secondary">Submit for Review</button>
+          <button type="submit" class="btn btn-secondary">Add Dog</button>
         </div>
 
         </form>
