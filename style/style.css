@@ -1,20 +1,4 @@
-/* /* nav {
-  background-color: #333;
-  overflow: hidden;
-} */
-header h1 {
-  color: black;
-  text-shadow: 2px 2px 2px rgb(104, 102, 107);
-  padding-top: 10px;
-  padding-left: 30px;
-  font-family: "Gochi Hand", cursive;
-  font-size: 40px;
-}
-a[href] {
-  color: #000;
-  text-decoration: none;
-}
-.navbar a {
+/* .navbar a {
   padding: 2%;
   position: relative;
   left: 35%;
@@ -31,7 +15,7 @@ a[href] {
 }
 .navbar a:hover i {
   text-decoration-line: underline;
-}
+} */
 
 .wrap {
   width: 25%;
@@ -41,7 +25,7 @@ a[href] {
   margin: 1.5%;
   /* transform: translate(-50%, -50%); */
 }
-.search {
+/* .search {
   width: 100%;
   position: relative;
   display: flex;
@@ -72,8 +56,9 @@ a[href] {
   color: #fff;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
-  /* font-size: 20px; */
+  font-size: 20px;
 }
+*/
 
 section {
   padding: 60px 0;
@@ -86,7 +71,7 @@ body {
   text-align: center;
   position: relative;
   color: #e7baa1;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
   font-family: "Gochi Hand", cursive;
   font-size: 70px;
@@ -104,8 +89,8 @@ body {
 
 .bg button {
   border: rgb(96, 53, 9) solid;
-  background-color: #ffffff8e;
-  border-width: 3px;
+  background-color: #ffffffaf;
+  border-width: 2px;
   border-radius: 30px;
   padding: 1%;
   text-align: center;
@@ -113,10 +98,7 @@ body {
   font-size: 20px;
   height: 70px;
   width: 170px;
-  margin: -60px -50px;
-  position: relative;
-  top: 50%;
-  left: 47.5%;
+
   font-family: "Gochi Hand", cursive;
 }
 
@@ -146,47 +128,7 @@ body {
   opacity: 1;
   right: 0;
 }
-.contain {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-#welcome {
-  text-align: center;
-  color: black;
-  text-shadow: 2px 2px 2px rgb(104, 102, 107);
-  padding-top: 5px;
-  font-family: "Gochi Hand", cursive;
-  font-size: 40px;
-}
-.wrapper {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  box-sizing: border-box;
-  margin: 2%;
-}
-.login {
-  margin-left: 15%;
-  font-family: "PT Sans Narrow", sans-serif;
-  font-size: 15px;
-  font-weight: bolder;
-  text-decoration: underline;
-}
-.signup {
-  margin-left: 15%;
-  font-family: "PT Sans Narrow", sans-serif;
-  font-size: 15px;
-  font-weight: bolder;
-  text-decoration: underline;
-}
-.vl {
-  border-left: 1px solid #253274;
-  height: 100%;
-  position: relative;
-  /* left: 30%; */
-  /* margin-left: -3px; */
-  top: 50%;
-}
+
 /* input[type="email"],
 input[type="password"],
 input[type="text"],
@@ -207,21 +149,7 @@ body {
   font-family: "Open Sans", sans-serif;
 } */
 
-@media screen and (max-width: 600px) {
-  .wrapper,
-  .vl,
-  .signup,
-  .login {
-    display: grid;
-    grid-template-columns: 100%;
-    box-sizing: border-box;
-    margin: 2%;
-    border: none;
-    margin-top: 5%;
-    margin-left: 5%;
-  }
-}
-input[type="text"],
+/* input[type="text"],
 select,
 textarea,
 input[type="email"],
@@ -266,7 +194,7 @@ input[type="submit"]:hover {
   float: left;
   width: 60%;
   margin-top: 6%;
-}
+} */
 
 /* Clear floats after the columns */
 .row:after {
@@ -280,7 +208,7 @@ input[type="submit"]:hover {
   width: 100%;
   height: auto;
 }
-.col-50 {
+/* .col-50 {
   padding: 5px 50px;
   float: left;
   width: 100%;
@@ -313,4 +241,34 @@ input[type="button"] {
 }
 input[type="button"]:hover {
   background-color: gray;
+} */
+section {
+  padding: 60px 0;
+}
+body {
+  background-color: #e3f2fd;
+}
+header h1 {
+  color: #315278;
+  text-shadow: 2px 2px 2px rgb(104, 102, 107);
+  padding-top: 30px;
+  padding-left: 40px;
+  font-family: "Gochi Hand", cursive;
+  font-size: 40px;
+}
+.material-icons.md-18 {
+  font-size: 18px;
+}
+.material-icons.md-24 {
+  font-size: 24px;
+}
+.material-icons.md-36 {
+  font-size: 36px;
+}
+.material-icons.md-48 {
+  font-size: 48px;
+}
+.round {
+  border-radius: 20px;
+  border: 1px solid gray;
 }
