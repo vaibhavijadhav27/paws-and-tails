@@ -1,29 +1,58 @@
 <?php
+error_reporting(0);
+?>
+<?php
 $showError = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  include './DataBase/connection.php';
-  $name = $_POST["name"];
-  $email = $_POST["email"];
-  $address = $_POST["address"];
-  $phone = $_POST["phone"];
-  $password = $_POST["password"];
-  $cpassword = $_POST["cpassword"];
+  include 'DataBase/connection.php';
+  $num1 = 0;
+  $num2 = 0;
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $cpassword = $_POST['cpassword'];
+  $address = $_POST['address'];
+  $phone = $_POST['phone'];
   $already = "Select * from `user` where phone='$phone'";
   $already1 = "Select * from `user` where email='$email'";
-
-  if (($password == $cpassword) && (!$already) && (!$already1)) {
-    $sql = "INSERT INTO `user` (`name`, `email`, `address`, `phone`, `password`) VALUES ('$name', '$email', '$address', '$phone', '$password')";
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-      $showAlert = true;
-    }
-    header("location: ./AdminHome.html");
-  } elseif ($already1) {
-    $showError = "email id already registered, please login";
-  } elseif ($already) {
-    $showError = "phone number already registered";
+  $alreadyresult = mysqli_query($conn, $already);
+  $num1 = mysqli_num_rows($alreadyresult);
+  $already1result = mysqli_query($conn, $already1);
+  $num2 = mysqli_num_rows($already1result);
+  if (empty($name)) {
+    $showError = "Please enter your Name !";
+  } elseif (!empty($name) && !preg_match("/[a-zA-Z]+ [a-zA-Z]+$/", $name)) {
+    $showError = "Please match the requested format for Name!";
+  } elseif (empty($email)) {
+    $showError = "Please enter your email id!";
+  } elseif (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $showError = "Invalid Email ID!";
+  } elseif (empty($phone)) {
+    $showError = "Please enter your Phone Number!";
+  } elseif (!empty($phone) && !preg_match("/^[0-9]{10}$/", $phone)) {
+    $showError = "Invalid Phone Number!";
+  } elseif (empty($password)) {
+    $showError = "Please choose your password!";
+  } elseif (empty($cpassword)) {
+    $showError = "Please Retype the password to confirm the password!";
+  } elseif (empty($address)) {
+    $showError = "Please enter your address!";
   } elseif ($password != $cpassword) {
     $showError = "Passwords do not match";
+  } else {
+
+    if (($num1 == 0) && ($num2 == 0)) {
+      $sql = "INSERT INTO `user` (`name`, `email`, `address`, `phone`, `password`,`profile`) VALUES ('$name', '$email', '$address', '$phone', '$password','user.png')";
+      $result = mysqli_query($conn, $sql);
+      if ($result) {
+        $showAlert = true;
+      } else {
+        $showError = "something went wrong, Please try again later";
+      }
+      header("location: User/UserHomePage.html");
+    } else {
+      $showError = "User already registered";
+    }
   }
 }
 ?>
@@ -88,21 +117,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <span class="input-group-text">
                 <i class="bi bi-person-fill text-secondary"></i>
               </span>
-              <input required type="text" id="name" name="name" class="form-control" placeholder="Firstname Surname " pattern="[a-zA-Z]+ [a-zA-Z]+$" oninvalid="setCustomValidity('Please enter alphabets only and match the requested format. ')" />
+              <input type="text" id="name" name="name" class="form-control" placeholder="Firstname Surname ">
             </div>
-            <label required for="email" class="form-label">Email address:</label>
+            <label for=" email" class="form-label">Email address:</label>
             <div class="input-group mb-4">
               <span class="input-group-text">
                 <i class="bi bi-envelope-fill text-secondary"></i>
               </span>
-              <input required type="text" id="email" name="email" class="form-control" placeholder="e.g. email@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" oninvalid="setCustomValidity('Please enter your email id correctly. ')" />
+              <input type="text" id="email" name="email" class="form-control" placeholder="e.g. email@example.com">
             </div>
             <label for="phone" class="form-label">Phone Number</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
                 <i class="bi bi-telephone-fill text-secondary"></i>
               </span>
-              <input required class="form-control" type="text" id="phone" name="phone" placeholder="eg. 9652XXXXX0" maxlength="10" minlength="10">
+              <input class="form-control" type="text" id="phone" name="phone" placeholder="eg. 9652XXXXX0">
             </div>
             <label for="password" class="form-label">Password</label>
             <div class="mb-4 input-group">

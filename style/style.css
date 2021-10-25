@@ -272,3 +272,31 @@ header h1 {
   border-radius: 20px;
   border: 1px solid gray;
 }
+.nav-pills > li > a[href],
+.navy > .nav-pills > a[href] {
+  color: #6c757d !important;
+}
+
+.nav-pills > li > a.active,
+.navy > .nav-pills > a.active,
+.nav-pills > li > a.active > .material-icons {
+  color: #ffffff !important;
+  background-color: #6c757d !important;
+}
+.nav-pills > li > a.active:hover,
+.navy > .nav-pills > a.active:hover,
+.nav-pills > li > a.active:hover > .material-icons:hover {
+  background-color: #e3f2fd !important;
+  color: #315278 !important;
+}
+.nav-pills > li > a:hover,
+.navy > .nav-pills > a:hover,
+.nav-pills > li > a:hover > .material-icons:hover {
+  background-color: #e3f2fd !important;
+  color: #315278 !important;
+  font-weight: bold !important;
+}
+
+.nav-pills > li > a:hover > .material-icons:hover {
+  font-size: 26px !important;
+}

@@ -1,23 +1,31 @@
 <?php
-$login = false;
 $showError = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include 'DataBase/connection.php';
   $email = $_POST["email"];
   $password = $_POST["password"];
 
-
-  $sql = "Select * from `user` where email='$email' AND password='$password'";
+  $sql = "Select * from `admin` where email='$email' AND password='$password'";
   $result = mysqli_query($conn, $sql);
   $num = mysqli_num_rows($result);
   if ($num == 1) {
-    $login = true;
     session_start();
-    $_SESSION['loggedin'] = true;
-    $_SESSION['email'] = $email;
-    header("location: ./AdminHome.html");
+    $userinfo = mysqli_fetch_assoc($result);
+    $_SESSION['admin'] = $userinfo;
+    header("location: ./Admin/AdminHomePage.php");
   } else {
-    $showError = "Invalid Credentials";
+
+    $sql = "Select * from `user` where email='$email' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+    $num = mysqli_num_rows($result);
+    if ($num == 1) {
+      session_start();
+      $userinfo = mysqli_fetch_assoc($result);
+      $_SESSION['user'] = $userinfo;
+      header("location: ./User/UserHomePage.html");
+    } else {
+      $showError = "Invalid Credentials";
+    }
   }
 }
 
@@ -40,14 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
   <?php
-  if ($login) {
-    echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success!</strong> You are logged in
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-        </button>
-    </div> ';
-  }
   if ($showError) {
     echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Error!</strong> ' . $showError . '
