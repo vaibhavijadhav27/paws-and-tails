@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 ?>
 <html lang="en">
 
@@ -165,16 +166,16 @@ session_start();
                     <div class="card" style="width: 15em;">
                         <img src="<?php echo $image; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <p class="card-text">Name:
+                            <p class="card-text"><b>Name:</b>
                                 <?php echo $row['name'] ?>
                             </p>
-                            <p class="card-text">Breed:
+                            <p class="card-text"><b>Breed:</b>
                                 <?php echo $row['breed'] ?>
                             </p>
-                            <p class="card-text">Age:
+                            <p class="card-text"><b>Age:</b>
                                 <?php echo $row['age'] ?>
                             </p>
-                            <p class="card-text">Gender:
+                            <p class="card-text"><b>Gender:</b>
                                 <?php echo $row['gender'] ?>
                             </p>
 

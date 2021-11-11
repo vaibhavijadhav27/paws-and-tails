@@ -4,7 +4,12 @@ error_reporting(0);
 <?php
 ob_start();
 session_start();
-
+if (empty($_SESSION['user'])) {
+  $currentPage = !empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+  $_SESSION['request_url'] = $currentPage;
+  header('Location: ../login.php');
+  exit();
+}
 $showError = false;
 if (isset($_POST) && !empty($_FILES)) {
   $name = $_POST["name"];

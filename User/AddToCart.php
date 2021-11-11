@@ -2,6 +2,12 @@
 session_start();
 error_reporting(0);
 $showAlert = false;
+if (empty($_SESSION['user'])) {
+    $currentPage = !empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+    $_SESSION['request_url'] = $currentPage;
+    header('Location: ../login.php');
+    exit();
+}
 if (!empty($_SESSION['user'])) {
     $userid = $_SESSION['user']['user_id'];
     $productid = !empty($_GET['productid']) ? $_GET['productid'] : '';
@@ -38,7 +44,7 @@ if (!empty($_SESSION['user'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paws and Tails | Request for Adoption</title>
+    <title>Paws and Tails | Cart</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet" />

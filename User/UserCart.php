@@ -2,6 +2,12 @@
 session_start();
 include('../DataBase/connection.php');
 error_reporting(0);
+if (empty($_SESSION['user'])) {
+    $currentPage = !empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+    $_SESSION['request_url'] = $currentPage;
+    header('Location: ../login.php');
+    exit();
+}
 ?>
 <!doctype html>
 <html lang="en">

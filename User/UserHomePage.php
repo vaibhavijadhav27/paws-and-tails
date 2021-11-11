@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 ?>
 <html lang="en">
 
@@ -101,14 +102,14 @@ session_start();
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex">
+                <form class="d-flex" method="post" action="../Admin/AdminSearchProduct.php">
                     <div class="mb-1 mt-3 ml-5 input-group">
                         <span class="input-group-text">
                             <i class="fas fa-search text-secondary"></i>
                         </span>
-                        <input type="search" id="search" name="search" class="form-control" placeholder="search here" style="font-style:italic" />
+                        <input type="text" name="user_query" class="form-control" placeholder="search here" style="font-style:italic" />
                     </div>
-                    <button class="mb-1 mt-3 btn btn-outline-secondary" type="submit">Search</button>
+                    <button class="mb-1 mt-3 btn btn-outline-secondary" type="submit" name="searchHome">Search</button>
                 </form>
                 <ul class="nav nav-pills me-auto mb-2 mb-lg-0" style="margin-left:20%">
                     <li class="nav-item px-3">
@@ -161,9 +162,9 @@ session_start();
                 <div class="card">
                     <img src="<?php echo $image; ?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Product: <?php echo $row['name'] ?></h5>
-                        <p class="card-text">Brand: <?php echo $row['brand'] ?></p>
-                        <p class="card-text">Price: <?php echo $row['price'] ?></p>
+                        <p class="card-title"><b>Product:</b> <?php echo $row['name'] ?></p>
+                        <p class="card-text"><b>Brand:</b> <?php echo $row['brand'] ?></p>
+                        <p class="card-text"><b>Price:</b> &#8377; <?php echo $row['price'] ?></p>
                     </div>
 
                     <div class="card__inner d-grid">

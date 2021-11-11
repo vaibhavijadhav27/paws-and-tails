@@ -4,6 +4,8 @@ session_start();
 <?php
 include('../DataBase/connection.php');
 if (empty($_SESSION['user'])) {
+    $currentPage = !empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+    $_SESSION['request_url'] = $currentPage;
     header('Location: ../login.php');
     exit();
 }
@@ -24,7 +26,7 @@ if (mysqli_num_rows($result) > 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paws and Tails | Get a Dog</title>
+    <title>Paws and Tails | Account</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet" />

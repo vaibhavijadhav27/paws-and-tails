@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+error_reporting(0);
 ?>
 <html lang="en">
 
@@ -8,7 +8,7 @@ session_start();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paws and Tails | Get a Dog</title>
+  <title>Paws and Tails | Health and Train</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet" />
@@ -160,10 +160,10 @@ session_start();
           <div class="card" style="width: 15em;">
             <img src="<?php echo $image; ?>" style="height:50%; object-fit:contain;margin-top:10px" class="card-img-top" alt="...">
             <div class="card-body">
-              <p class="card-text">Name: <?php echo $row['name'] ?></p>
-              <p class="card-text">Age: <?php echo $row['age'] ?></p>
-              <p class="card-text">Experience: <?php echo $row['experience'] ?></p>
-              <p class="card-text">Fee: &#8377; <?php echo $row['fees'] ?></p>
+              <p class="card-text"><b>Name:</b> <?php echo $row['name'] ?></p>
+              <p class="card-text"><b>Age:</b> <?php echo $row['age'] ?></p>
+              <p class="card-text"><b>Experience:</b> <?php echo $row['experience'] ?></p>
+              <p class="card-text"><b>Fee:</b> &#8377; <?php echo $row['fees'] ?></p>
             </div>
 
             <div class="card__inner d-grid">

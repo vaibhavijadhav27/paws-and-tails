@@ -18,9 +18,10 @@
 <body style="overflow-y: hidden !important ; background-color: white !important">
   <div class="bg">
     <img src="./assets/Start.png" alt="" />
-    <h1>Paws and Tails</h1>
+    <h1 style="text-align: center; margin-top:10%">Paws and Tails</h1>
 
-    <button style="
+    <?php header("refresh: 3; url = ./User/UserHomePage.php"); ?>
+    <!-- <button style="
       position: relative;
       top: 50%;
       left: 35%;" onclick="location.href = './login.php'">
@@ -31,7 +32,7 @@
       top: 50%;
       left: 40%;" onclick="location.href = './signup.php'">
       <span>SignUp</span>
-    </button>
+    </button> -->
 
   </div>
 </body>

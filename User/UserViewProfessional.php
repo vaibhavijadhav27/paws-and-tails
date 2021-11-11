@@ -50,7 +50,7 @@ if (!empty($productID) && is_numeric($productID)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paws and Tails</title>
+    <title>Paws and Tails| Health and Train</title>
     <!-- CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -82,24 +82,24 @@ if (!empty($productID) && is_numeric($productID)) {
                                     <img style=" width:300px" src="<?php echo $src; ?>" />
                                 </div>
                                 <div class="col-sm-6 col-md-8 " style="padding-left:20%">
-                                    <p class="text-secondary"><i class="bi bi-person-fill text-secondary" style="font-size:18px !important; margin-right:8px;"></i>Name: <?php echo $product['name'] ?></p>
+                                    <p class="text-secondary"><i class="bi bi-person-fill text-secondary" style="font-size:18px !important; margin-right:8px;"></i><b>Name:</b> <?php echo $product['name'] ?></p>
                                     <p class="text-secondary">
-                                        <i class="material-icons text-secondary md-18" style="font-size:18px !important; margin-right:8px;">cake</i>Age: <?php echo $product['age'] ?>
+                                        <i class="material-icons text-secondary md-18" style="font-size:18px !important; margin-right:8px;">cake</i><b>Age:</b> <?php echo $product['age'] ?>
 
                                     </p>
                                     <p class="text-secondary">
-                                        <i class="material-icons text-secondary md-18" style="font-size:18px !important; margin-right:8px !important;">stars</i>Experience: <?php echo $product['experience'] ?>
+                                        <i class="material-icons text-secondary md-18" style="font-size:18px !important; margin-right:8px !important;">stars</i><b>Experience:</b> <?php echo $product['experience'] ?>
 
                                     </p>
                                     <p class="text-secondary">
-                                        <i class="fas fa-rupee-sign text-secondary" style="font-size:18px !important; margin-right:8px;"></i>Fee: <?php echo $product['fees'] ?>
+                                        <i class="fas fa-rupee-sign text-secondary" style="font-size:18px !important; margin-right:8px;"></i><b>Fee:</b> <?php echo $product['fees'] ?>
 
                                     </p>
-                                    <p class="text-secondary">
-                                        <i class="fas fa-file-alt text-secondary" style="font-size:18px !important; margin-right:8px;"></i>Description: <?php echo $product['description'] ?>
+                                    <p style=" margin-right:8px;" class="text-secondary">
+                                        <i class="fas fa-file-alt text-secondary" style="font-size:18px !important; margin-right:8px;"></i><b>Description:</b></br> <?php echo $product['description'] ?>
                                     </p>
                                     <!-- Split button -->
-                                    <a class=" btn btn-success btn-block" href='<?php echo 'AddToCart.php?p_id=' . $row['p_id']; ?>'><b>Add to Cart</b></a>
+                                    <a class=" btn btn-success btn-block" href='<?php echo 'AddToCart.php?p_id=' . $product['p_id']; ?>'><b>Add to Cart</b></a>
                                 </div>
                             </div>
 

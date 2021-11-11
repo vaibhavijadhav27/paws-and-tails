@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 ?>
 <html lang="en">
 
@@ -155,9 +156,9 @@ session_start();
 
                     <img src="<?php echo $image; ?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Product: <?php echo $row['name'] ?></h5>
-                        <p class="card-text">Brand: <?php echo $row['brand'] ?></p>
-                        <p class="card-text">Price: <?php echo $row['price'] ?></p>
+                        <p class="card-title"><b>Product:</b> <?php echo $row['name'] ?></p>
+                        <p class="card-text"><b>Brand:</b> <?php echo $row['brand'] ?></p>
+                        <p class="card-text"><b>Price:</b> &#8377;<?php echo $row['price'] ?></p>
                     </div>
 
 

@@ -9,7 +9,7 @@ error_reporting(0);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paws and Tails | Get a Dog</title>
+    <title>Paws and Tails | Products</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet" />
@@ -115,9 +115,9 @@ error_reporting(0);
                     <div class="card">
                         <img src="<?php echo $image; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Product: <?php echo $row['name'] ?></h5>
-                            <p class="card-text">Brand: <?php echo $row['brand'] ?></p>
-                            <p class="card-text">Price: <?php echo $row['price'] ?></p>
+                            <p class="card-title"><b>Product:</b> <?php echo $row['name'] ?></p>
+                            <p class="card-text"><b>Brand:</b> <?php echo $row['brand'] ?></p>
+                            <p class="card-text"><b>Price:</b> &#8377; <?php echo $row['price'] ?></p>
                         </div>
 
                         <!-- <div class="card-body">

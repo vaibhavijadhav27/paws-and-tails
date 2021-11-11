@@ -23,7 +23,7 @@ if (!empty($productID) && is_numeric($productID)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paws and Tails</title>
+    <title>Paws and Tails| Products</title>
     <!-- CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -55,21 +55,21 @@ if (!empty($productID) && is_numeric($productID)) {
                                                                     ?>" />
                                 </div>
                                 <div class="col-sm-6 col-md-8 " style="padding-left:20%">
-                                    <p class="text-secondary"><i class="fas fa-bone text-secondary mx-2"></i>Product: <?php echo $product['name'] ?></p>
+                                    <p class="text-secondary"><i class="fas fa-bone text-secondary mx-2"></i><b>Product:</b> <?php echo $product['name'] ?></p>
                                     <p class="text-secondary">
-                                        <i class="fas fa-award text-secondary mx-2"></i>Brand: <?php echo $product['brand'] ?>
+                                        <i class="fas fa-award text-secondary mx-2"></i><b>Brand:</b> <?php echo $product['brand'] ?>
 
                                     </p>
                                     <p class="text-secondary">
-                                        <i class="fas fa-rupee-sign text-secondary mx-2"></i>Price: <?php echo $product['price'] ?>
+                                        <i class="fas fa-rupee-sign text-secondary mx-2"></i><b>Price:</b> <?php echo $product['price'] ?>
 
                                     </p>
-                                    <p class="text-secondary">
-                                        <i class="fas fa-file-alt text-secondary mx-2"></i>Description: <?php echo $product['description'] ?>
+                                    <p class="text-secondary " style=" margin-left:8px;">
+                                        <i class="fas fa-file-alt text-secondary " style=" font-size:18px !important; margin-right:8px;"></i><b>Description:</b></br><?php echo $product['description'] ?>
                                     </p>
                                     <!-- Split button -->
-                                    
-                                    <a class=" btn btn-success btn-block" href='<?php echo 'AddToCart.php?productid=' . $row['dproduct_id']; ?>'><b>Add to Cart</b></a>
+
+                                    <a class=" btn btn-success btn-block" href='<?php echo 'AddToCart.php?productid=' . $product['dproduct_id']; ?>'><b>Add to Cart</b></a>
                                 </div>
                             </div>
 
@@ -86,4 +86,5 @@ if (!empty($productID) && is_numeric($productID)) {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
+
 </html>

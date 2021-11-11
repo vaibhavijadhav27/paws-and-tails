@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paws and Tails | Health and Train</title>
+    <title>Paws and Tails | Account</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet" />
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section id="contact">
         <div class="container-lg">
             <header class="card-header">
-                <h4 class="card-title mt-2">Edit Profile</h4>
+                <h4 class="card-title mt-2">Edit Profile<i class="bi bi-x text-secondary mb-2 pb-2" style="font-size:40px; cursor:pointer; float: right; text-shadow:none;" onclick="history.go(-1);"></i></h4>
             </header>
 
             <div class="row justify-content-center my-5">

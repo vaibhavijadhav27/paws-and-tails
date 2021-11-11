@@ -26,7 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         session_start();
         $userinfo = mysqli_fetch_assoc($result);
         $_SESSION['user'] = $userinfo;
-        header("location: ./User/UserHomePage.php");
+        $request_url = !empty($_SESSION['request_url']) ? $_SESSION['request_url'] : './User/UserHomePage.php';
+        unset($_SESSION['request_url']);
+        header("location: " . $request_url);
       } else {
         $showError = "Invalid Credentials";
       }
@@ -68,7 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container-lg">
 
       <div class="text-center">
-        <h2 class="mt-5">Login</h2>
+        <h2 class="mt-5">Login
+
+          <i class="bi bi-x text-secondary" style="font-size:40px; cursor:pointer; float: right; text-shadow:none;" onclick="history.go(-1);"></i>
+        </h2>
         <p class="lead">Are you new here? <a href="./signup.php">Signup here</a></p>
       </div>
       <div class="row justify-content-center my-5">

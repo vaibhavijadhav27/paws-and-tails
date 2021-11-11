@@ -39,7 +39,7 @@ if (!empty($productID) && is_numeric($productID)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paws and Tails</title>
+    <title>Paws and Tails| Get a dog</title>
     <!-- CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,38 +73,38 @@ if (!empty($productID) && is_numeric($productID)) {
                                 <div class="col-sm-6 col-md-8 " style="padding-left:20%">
                                     <?php
                                     if ($type == 'adopt' || $type == 'foster') { ?>
-                                        <p class="text-secondary"><i class="fas fa-dog text-secondary " style="font-size:18px !important; margin-right:8px;"></i>Name: <?php echo $product['name'] ?></p>
+                                        <p class="text-secondary"><i class="fas fa-dog text-secondary " style="font-size:18px !important; margin-right:8px;"></i><b>Name:</b> <?php echo $product['name'] ?></p>
                                     <?php
                                     }
                                     ?>
 
 
                                     <p class="text-secondary">
-                                        <i class="material-icons text-secondary " style="font-size:18px !important; margin-right:8px;">pets</i>Breed: <?php echo $product['breed'] ?>
+                                        <i class="material-icons text-secondary " style="font-size:18px !important; margin-right:8px;">pets</i><b>Breed:</b> <?php echo $product['breed'] ?>
 
                                     </p>
                                     <p class="text-secondary">
-                                        <i class="material-icons text-secondary " style="font-size:18px !important; margin-right:8px;">cake</i>Age: <?php echo $product['age'] ?>
+                                        <i class="material-icons text-secondary " style="font-size:18px !important; margin-right:8px;">cake</i><b>Age:</b> <?php echo $product['age'] ?>
 
                                     </p>
                                     <p class="text-secondary">
-                                        <i class="bi bi-gender-ambiguous text-secondary" style="font-size:18px !important; margin-right:8px;"></i>Gender: <?php echo $product['gender'] ?>
+                                        <i class="bi bi-gender-ambiguous text-secondary" style="font-size:18px !important; margin-right:8px;"></i><b>Gender:</b> <?php echo $product['gender'] ?>
 
                                     </p>
                                     <?php
                                     if ($type == 'buy') { ?>
-                                        <p class="text-secondary"><i class="fas fa-rupee-sign text-secondary mx-2"></i>Price: <?php echo $product['price'] ?></p>
+                                        <p class="text-secondary"><i class="fas fa-rupee-sign text-secondary mx-2"></i><b>Price:</b> <?php echo $product['price'] ?></p>
                                     <?php
                                     } elseif ($type == 'foster') { ?>
-                                        <p class="text-secondary"><i class="fas fa-rupee-sign text-secondary mx-2"></i>Payment: <?php echo $product['price'] ?></p>
+                                        <p class="text-secondary"><i class="fas fa-rupee-sign text-secondary mx-2"></i><b>Payment:</b> <?php echo $product['price'] ?></p>
                                     <?php
                                     }
                                     ?>
-                                    <p class="text-secondary">
-                                        <i class="fas fa-file-alt text-secondary mx-2"></i>Description: <?php echo $product['description'] ?>
+                                    <p style=" margin-left:8px;" class="text-secondary">
+                                        <i class="fas fa-file-alt text-secondary" style="font-size:18px !important; margin-right:8px;"></i><b>Description:</b></br> <?php echo $product['description'] ?>
                                     </p>
                                     <!-- Split button -->
-                                    <a class=" btn btn-success btn-block" href='<?php echo 'AddToCart.php?d_id=' . $row['d_id'], '&dtype=' . $row['type']; ?>'><b>Add to Cart</b></a>
+                                    <a class=" btn btn-success btn-block" href='<?php echo 'AddToCart.php?d_id=' . $product['d_id'], '&dtype=' . $product['type']; ?>'><b>Add to Cart</b></a>
                                 </div>
                             </div>
 

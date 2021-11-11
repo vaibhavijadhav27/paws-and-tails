@@ -112,7 +112,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container-lg">
 
       <div class="text-center">
-        <h2>Sign Up</h2>
+        <h2>Sign Up
+
+          <i class="bi bi-x text-secondary" style="font-size:40px; cursor:pointer; float: right; text-shadow:none;" onclick="history.go(-1);"></i>
+        </h2>
         <p class="lead">Already have an account? <a href="./login.php">Login here</a> </p>
       </div>
       <div class="row justify-content-center my-5">

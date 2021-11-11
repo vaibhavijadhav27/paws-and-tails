@@ -135,21 +135,21 @@ error_reporting(0);
                         <div class="card-body">
                             <?php
                             if ($type == 'adopt' || $type == 'foster') { ?>
-                                <p class="card-text">Name: <?php echo $row['name'] ?></p>
+                                <p class="card-text"><b>Name:</b> <?php echo $row['name'] ?></p>
                             <?php
                             }
                             ?>
-                            <p class="card-text">Breed: <?php echo $row['breed'] ?></p>
-                            <p class="card-text">Age: <?php echo $row['age'] ?></p>
-                            <p class="card-text">Gender: <?php echo $row['gender'] ?></p>
+                            <p class="card-text"><b>Breed:</b> <?php echo $row['breed'] ?></p>
+                            <p class="card-text"><b>Age:</b> <?php echo $row['age'] ?></p>
+                            <p class="card-text"><b>Gender:</b> <?php echo $row['gender'] ?></p>
                             <?php
                             if ($type == 'buy' || $type == 'foster') { ?>
-                                <p class="card-text">Price: &#8377; <?php echo $row['price'] ?></p>
+                                <p class="card-text"><b>Price:</b> &#8377; <?php echo $row['price'] ?></p>
                             <?php
 
                             }
                             ?>
-                            <p class="card-text">Type: <?php echo $row['type'] ?></p>
+                            <p class="card-text"><b>Type:</b> <?php echo $row['type'] ?></p>
                         </div>
 
                         <div class="card__inner d-grid">

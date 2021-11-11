@@ -157,10 +157,10 @@ error_reporting(0);
                 <div class="card" style="width: 15em;">
                     <img src="<?php echo $image; ?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Name: <?php echo $row['name'] ?></p>
-                        <p class="card-text">Age: <?php echo $row['age'] ?></p>
-                        <p class="card-text">Experience: <?php echo $row['experience'] ?></p>
-                        <p class="card-text">Fee: <?php echo $row['fees'] ?></p>
+                        <p class="card-text"><b>Name:</b> <?php echo $row['name'] ?></p>
+                        <p class="card-text"><b>Age:</b> <?php echo $row['age'] ?></p>
+                        <p class="card-text"><b>Experience:</b> <?php echo $row['experience'] ?></p>
+                        <p class="card-text"><b>Fee:</b> &#8377; <?php echo $row['fees'] ?></p>
                     </div>
 
                     <div class="card__inner d-grid">

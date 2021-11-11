@@ -43,7 +43,7 @@ if (!empty($productID) && is_numeric($productID)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paws and Tails</title>
+    <title>Paws and Tails| Get a dog</title>
     <!-- CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -108,7 +108,7 @@ if (!empty($productID) && is_numeric($productID)) {
                                         <i class="fas fa-file-alt text-secondary" style="font-size:18px !important; margin-right:8px;"></i><b>Description:</b></br> <?php echo $product['description'] ?>
                                     </p>
                                     <!-- Split button -->
-                                    <a class=" btn btn-success" href='<?php echo $form . '?id=' . $productID; ?>'><b>Edit</b></a>
+                                    <a class=" btn btn-success" style="padding-left:7%; padding-right:7%;" href='<?php echo $form . '?id=' . $productID; ?>'><b>Edit</b></a>
                                     <a class=" btn btn-danger" href='<?php echo 'AdminDeleteDog.php?id=' . $productID . '&type=' . $type; ?>' onclick=" return confirm('Are you sure you want to delete this product?');"><b>Delete</b></a>
                                 </div>
                             </div>
