@@ -1,7 +1,4 @@
 <?php
-error_reporting(0);
-?>
-<?php
 $showError = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include 'DataBase/connection.php';
@@ -44,12 +41,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (($num1 == 0) && ($num2 == 0)) {
       $sql = "INSERT INTO `user` (`name`, `email`, `address`, `phone`, `password`,`profile`) VALUES ('$name', '$email', '$address', '$phone', '$password','user.png')";
       $result = mysqli_query($conn, $sql);
+
       if ($result) {
-        $showAlert = true;
+        $sql1 = "SELECT * FROM user WHERE `email`='$email'";
+        $result1 = mysqli_query($conn, $sql1);
+        if ($result1) {
+          $num = mysqli_num_rows($result1);
+          if ($num == 1) {
+            session_start();
+            $userinfo = mysqli_fetch_assoc($result1);
+            $_SESSION['user'] = $userinfo;
+            header("location: ./User/UserHomePage.php");
+          }
+        }
       } else {
         $showError = "something went wrong, Please try again later";
       }
-      header("location: User/UserHomePage.html");
     } else {
       $showError = "User already registered";
     }
@@ -138,14 +145,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <span class="input-group-text">
                 <i class="bi bi-key-fill text-secondary"></i>
               </span>
-              <input required type="password" class="form-control" id="password" name="password" placeholder="Choose your password">
+              <input type="password" class="form-control" id="password" name="password" placeholder="Choose your password">
             </div>
             <label for="password" class="form-label">Confirm Password</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
                 <i class="bi bi-check-circle-fill text-secondary"></i>
               </span>
-              <input required type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Re-type the password">
+              <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Re-type the password">
             </div>
             <label for="address" class="form-label">Address:</label>
             <div class="input-group mb-4">

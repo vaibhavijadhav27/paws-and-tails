@@ -1,9 +1,27 @@
 <?php
 error_reporting(0);
-?>
-<?php
 ob_start();
 session_start();
+$productID = !empty($_GET['id']) ? $_GET['id'] : '';
+if (!empty($productID) && is_numeric($productID)) {
+  include('../DataBase/connection.php');
+  $sql = "select * from `dog_products` where `dproduct_id`= $productID";
+  $result = mysqli_query($conn, $sql);
+  $rows = mysqli_num_rows($result);
+  if ($rows > 0) {
+    $productR = mysqli_fetch_assoc($result);
+  } else {
+    echo "Product doesn't exist";
+    exit();
+  }
+}
+
+$productName = (!empty($productR) && !empty($productR['name'])) ? $productR['name'] : '';
+$brandName = (!empty($productR) && !empty($productR['brand'])) ? $productR['brand'] : '';
+$productPrice = (!empty($productR) && !empty($productR['price'])) ? $productR['price'] : '';
+$productDesc = (!empty($productR) && !empty($productR['description'])) ? $productR['description'] : '';
+
+
 
 $showError = false;
 if (isset($_POST) && !empty($_FILES)) {
@@ -11,8 +29,8 @@ if (isset($_POST) && !empty($_FILES)) {
   $brand = $_POST["brand"];
   $price = $_POST["price"];
   $desc = $_POST["description"];
-  $photo = $_FILES['photo'];
-
+  $photo = !empty($_FILES['photo']) ? $_FILES['photo'] : [];
+  $pid = !empty($_POST['pid']) ? $_POST['pid'] : '';
   if (empty($product)) {
     $showError = "Product name cannot be empty!";
   } elseif (empty($brand)) {
@@ -21,30 +39,69 @@ if (isset($_POST) && !empty($_FILES)) {
     $showError = "Price cannot be empty!";
   } elseif (empty($desc)) {
     $showError = "Description cannot be empty!";
-  } elseif (empty($photo)) {
-    $showError = "Photo cannot be empty!";
   } else {
-    $targetDir = "../assets/products/";
-    $fileName = basename($_FILES["photo"]["name"]);
-    $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-    $allowTypes = array('jpg', 'png', 'jpeg');
-    if (in_array($fileType, $allowTypes)) {
-      // Upload file to server
-      if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath)) {
-        include('../DataBase/connection.php');
-        $sql = "INSERT INTO `dog_products` (`name`, `brand`, `price`, `description`, `photo`) VALUES ('$product', '$brand', '$price', '$desc','" . $fileName . "')";
-        $result = mysqli_query($conn, $sql);
-        if ($result) {
-          $showAlert = true;
-          $showError = false;
-        } else {
-          $showError = "There was some problem uploading, please try again later.";
-        }
+
+    // --------------
+    $photoName = '';
+    if (!empty($photo['name'])) {
+      $fileTempPath = $photo['tmp_name'];
+      $fileName = $photo['name'];
+      $fileNameCmp = explode('.', $fileName);
+      $fileExtension = strtolower(end($fileNameCmp));
+      $fileNewName = $fileName . $fileExtension;
+      $photoName = $fileName;
+
+      $allowed = ['jpg', 'jpeg', 'png'];
+      if (in_array($fileExtension, $allowed)) {
+        $uploadFileDir = "../assets/products/";
+        $destFilePath = $uploadFileDir . $photoName;
+        if (!move_uploaded_file($fileTempPath, $destFilePath))
+          $showError = "Picture couldn't be uploaded";
+      } else {
+        $showError = "Invalid file format";
+      }
+    }
+    // ----------------------
+    // else {
+    //   $targetDir = "../assets/products/";
+    //   $fileName = basename($_FILES["photo"]["name"]);
+    //   $targetFilePath = $targetDir . $fileName;
+    //   $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+    //   $allowTypes = array('jpg', 'png', 'jpeg');
+    //   if (in_array($fileType, $allowTypes)) {
+    //     // Upload file to server
+    //     if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath)) {
+    //       include('../DataBase/connection.php');
+    //----------------
+    if (!empty($pid)) {
+      if (!empty($photoName)) {
+
+        $sql = "UPDATE `dog_products` SET name = '{$product}', brand = '{$brand}',  price = '{$price}', description = '{$desc}',photo='{$photoName}' WHERE dproduct_id = {$pid}";
+        $message = 'Product Updated';
+      } else {
+        $sql = "UPDATE `dog_products` SET name = '{$product}', brand = '{$brand}', price= '{$price}', description = '{$desc}'  WHERE dproduct_id = {$pid}";
+        $message = 'Product Updated';
       }
     } else {
-      $showError = "Invalid file format!";
+
+      $sql = "INSERT INTO `dog_products` (`name`, `brand`, `price`, `description`, `photo`) VALUES ('$product', '$brand', '$price', '$desc','$photoName')";
+
+      $message = 'New product added';
     }
+    include('../DataBase/connection.php');
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+      $showAlert = true;
+      $showError = false;
+    } else {
+      $showError = "There was some problem, please try again later.";
+    }
+    //---------------------
+    //   }
+    // } else {
+    //   $showError = "Invalid file format!";
+    // }
+    // }
   }
 }
 
@@ -61,10 +118,10 @@ if (isset($_POST) && !empty($_FILES)) {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../style/style.css">
   <script src="https://kit.fontawesome.com/2c558ff8c9.js" crossorigin="anonymous"></script>
 </head>
@@ -75,16 +132,21 @@ if (isset($_POST) && !empty($_FILES)) {
       <icon style="padding-right:10px ">
         <img src="../assets/snoopy2.png" style="width:6% ;">
       </icon>
-      Paws and Tails
+      <a href="AdminHomePage.php" style="text-decoration:none !important; color:inherit">Paws and Tails</a>
+      <i class="bi bi-x text-secondary" style="font-size:40px; cursor:pointer; float: right; text-shadow:none;" onclick="history.go(-1);"></i>
     </h1>
   </header>
+
+
+
   <?php
   if ($showAlert == true) {
     echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success!</strong> New dog product added!
+        <strong>Success!</strong>' . $message . '!
         <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
         </button>
     </div> ';
+    header("refresh: 2; url = ./AdminProducts.php");
   }
   if ($showError) {
     echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -94,7 +156,7 @@ if (isset($_POST) && !empty($_FILES)) {
     </div> ';
   }
   ?>
-  <section id="contact">
+  <section id=" contact" style="padding:0">
     <div class="container-lg">
       <div class="text-center">
         <h2>Add Product</h2>
@@ -108,14 +170,14 @@ if (isset($_POST) && !empty($_FILES)) {
                 <!-- <i class="material-icons text-secondary md-18">sell</i> -->
                 <i class="fas fa-bone text-secondary"></i>
               </span>
-              <input type="text" id="productname" name="productname" class="form-control" placeholder="e.g. Dog food" />
+              <input type="text" id="productname" name="productname" value="<?php echo $productName ?>" class="form-control" placeholder="e.g. Dog food" />
             </div>
             <label for="brand" class="form-label">Brand:</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
                 <i class="bi bi-award-fill text-secondary"></i>
               </span>
-              <input type="text" id="brand" name="brand" class="form-control" placeholder="e.g. Pedigree" />
+              <input type="text" id="brand" name="brand" value="<?php echo $brandName ?>" class="form-control" placeholder="e.g. Pedigree" />
             </div>
             <label for="price" class="form-label">Pricing Details:</label>
             <div class="mb-4 input-group">
@@ -124,7 +186,7 @@ if (isset($_POST) && !empty($_FILES)) {
                   currency_rupee
                 </i>
               </span>
-              <input class="form-control" type="text" id="price" name="price" placeholder="e.g. &#8377; 300" />
+              <input class="form-control" type="text" id="price" name="price" value="<?php echo $productPrice ?>" placeholder="e.g. &#8377; 300" />
             </div>
         </div>
         <div class="col-lg-6">
@@ -142,10 +204,11 @@ if (isset($_POST) && !empty($_FILES)) {
             <span class="input-group-text">
               <i class="material-icons text-secondary md-18">description</i>
             </span>
-            <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+            <textarea class="form-control" name="description" id="description" rows="5"><?php echo $productDesc ?></textarea>
           </div>
         </div>
         <div class="mb-4 text-center">
+          <input type="hidden" name="pid" value="<?php echo $productID; ?>" />
           <input type="submit" class="btn btn-secondary" name="submit" value="Add Product" onclick="location:'./AdminAddProductForm.php'">
         </div>
         </form>

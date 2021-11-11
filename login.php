@@ -4,7 +4,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include 'DataBase/connection.php';
   $email = $_POST["email"];
   $password = $_POST["password"];
-
   $sql = "Select * from `admin` where email='$email' AND password='$password'";
   $result = mysqli_query($conn, $sql);
   $num = mysqli_num_rows($result);
@@ -14,17 +13,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['admin'] = $userinfo;
     header("location: ./Admin/AdminHomePage.php");
   } else {
-
-    $sql = "Select * from `user` where email='$email' AND password='$password'";
-    $result = mysqli_query($conn, $sql);
-    $num = mysqli_num_rows($result);
-    if ($num == 1) {
-      session_start();
-      $userinfo = mysqli_fetch_assoc($result);
-      $_SESSION['user'] = $userinfo;
-      header("location: ./User/UserHomePage.html");
+    $sql1 = "SELECT * from `suspend` where email='$email'";
+    $result1 = mysqli_query($conn, $sql1);
+    $num1 = mysqli_num_rows($result1);
+    if ($num1 > 0) {
+      $showError = "Your account has been suspended!";
     } else {
-      $showError = "Invalid Credentials";
+      $sql = "Select * from `user` where email='$email' AND password='$password'";
+      $result = mysqli_query($conn, $sql);
+      $num = mysqli_num_rows($result);
+      if ($num == 1) {
+        session_start();
+        $userinfo = mysqli_fetch_assoc($result);
+        $_SESSION['user'] = $userinfo;
+        header("location: ./User/UserHomePage.php");
+      } else {
+        $showError = "Invalid Credentials";
+      }
     }
   }
 }

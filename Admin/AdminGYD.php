@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <html lang="en">
 
 <head>
@@ -13,15 +18,73 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/2c558ff8c9.js" crossorigin="anonymous"></script>
     <style>
         .wrap {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            column-gap: 30%;
+            column-gap: 15%;
             row-gap: 20px;
             grid-auto-rows: minmax(100, auto);
         }
+
+        .card {
+            position: relative;
+            width: 17rem;
+            height: 22rem;
+            border-radius: 20px;
+            background-position: center center;
+            overflow: hidden;
+        }
+
+        /* Assigning properties to inner
+            content of card  */
+        .card__inner {
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            z-index: 1;
+            opacity: 0;
+            padding: 2rem 1.3rem 2rem 2rem;
+            transition: all 0.6s ease 0s;
+        }
+
+        /* On hovering card opacity of
+            content must be 1*/
+        .card:hover .card__inner {
+            opacity: 1;
+
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+        }
+
+        .card__inner p {
+            overflow-y: scroll;
+            height: 87%;
+            padding-right: 1rem;
+            font-weight: 200;
+            line-height: 2.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .container-md>.card>img {
+            height: 50%;
+            object-fit: contain;
+            margin-top: 10px
+        }
+
+        /* body {
+            font-family: Poppins, serif;
+        } */
     </style>
 
 </head>
@@ -32,7 +95,7 @@
             <icon style="padding-right:10px ">
                 <img src="../assets/snoopy2.png" style="width:6% ;">
             </icon>
-            Paws and Tails
+            <a href="AdminHomePage.php" style="text-decoration:none !important; color:inherit">Paws and Tails</a>
         </h1>
     </header>
 
@@ -42,14 +105,14 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex">
+                <form class="d-flex" method="post" action="../Admin/AdminSearchDog.php">
                     <div class="mb-1 mt-3 ml-5 input-group">
                         <span class="input-group-text">
                             <i class="fas fa-search text-secondary"></i>
                         </span>
-                        <input type="search" id="search" name="search" class="form-control" placeholder="search here" style="font-style:italic" />
+                        <input type="text" name="user_query1" class="form-control" placeholder="search here" style="font-style:italic" />
                     </div>
-                    <button class="mb-1 mt-3 btn btn-outline-secondary" type="submit">Search</button>
+                    <button class="mb-1 mt-3 btn btn-outline-secondary" type="submit" name="searchDog">Search</button>
                 </form>
                 <ul class="nav nav-pills me-auto mb-2 mb-lg-0" style="margin-left:20%">
                     <li class="nav-item px-3">
@@ -63,14 +126,14 @@
                         <a class="nav-link active " href="./AdminGYD.php">Get a dog</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a class="nav-link " href="./AdminHT.html">Health and Train</a>
+                        <a class="nav-link " href="./AdminHT.php">Health and Train</a>
                     </li>
                     <li class="nav-item px-3">
                         <a class="nav-link " href="./AdminAccount.php"> <i class="material-icons text-secondary md-24">account_circle</i>
                         </a>
                     </li>
                     <li class="nav-item px-3">
-                        <a class="nav-link" href="./AdminManageAccount.html"><i class="material-icons text-secondary md-24">manage_accounts</i>
+                        <a class="nav-link" href="./AdminManageAccount.php"><i class="material-icons text-secondary md-24">manage_accounts</i>
                         </a>
                     </li>
 
@@ -80,7 +143,7 @@
         </div>
     </nav>
     <?php
-    session_start();
+    $type = 'buy';
     if (!empty($_SESSION['admin'])) {
         $dogsql = "select * from `dog` where type='buy' order by d_id DESC";
         include('../DataBase/connection.php');
@@ -96,23 +159,26 @@
 
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $image = !empty($row['photo']) ? "../assets/dogs/buy/" . $row['photo'] : "https://via.placeholder.com/50.png/09f/666";
+                    $image = !empty($row['photo']) ? "../assets/dogs/buy/" . $row['photo'] : "https://via.placeholder.com/150";
 
                 ?>
 
-                    <div class="card" style="width: 15em;">
+                    <div class="card">
                         <img src="<?php echo $image; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <p class="card-text">Breed: <?php echo $row['breed'] ?></p>
-                            <p class="card-text">Age: <?php echo $row['age'] ?></p>
-                            <p class="card-text">Gender: <?php echo $row['gender'] ?></p>
-                            <p class="card-text">Price: <?php echo $row['price'] ?></p>
+                            <p class="card-text "><b>Breed:</b> <?php echo $row['breed'] ?></p>
+                            <p class="card-text "><b>Age:</b> <?php echo $row['age'] ?></p>
+                            <p class="card-text "><b>Gender:</b> <?php echo $row['gender'] ?></p>
+                            <p class="card-text "><b>Price:</b> &#8377; <?php echo $row['price'] ?></p>
                         </div>
 
-                        <div class="card-body">
-                            <a href="#" class="card-link">Edit</a>
-                            <a href="#" class="card-link">Delete</a>
+                        <div class="card__inner d-grid">
+
+                            <a class="btn btn-outline-light btn-block" style="height: 50px; margin-top:40%" href='<?php echo 'AdminViewDog.php?id=' . $row['d_id']; ?>'><b>View</b></a>
+                            <a class=" btn btn-outline-light btn-block" style="height: 50px;" href='<?php echo 'AdminBuyForm.php?id=' . $row['d_id']; ?>'><b>Edit</b></a>
+                            <a class=" btn btn-outline-light btn-block" style="height: 50px;" href='<?php echo 'AdminDeleteDog.php?id=' . $row['d_id'] . '&type=' . $type; ?>' onclick="return confirm('Are you sure you want to delete this dog?')" ;><b>Delete</b></a>
                         </div>
+
                     </div>
                 <?php
                 }
@@ -123,7 +189,7 @@
         }
     }
     ?>
-    <div class="position-fixed bottom-0 end-0 m-4 bg-light">
+    <div class=" position-fixed bottom-0 end-0 m-4 bg-light">
         <button class="btn btn-outline-secondary p-2" onclick="location.href = './AdminBuyForm.php'">Add
             New
             Dog</button>

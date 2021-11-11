@@ -68,7 +68,8 @@ if (isset($_POST) && !empty($_FILES)) {
             <icon style="padding-right:10px ">
                 <img src="../assets/snoopy2.png" style="width:6% ;">
             </icon>
-            Paws and Tails
+            <a href="AdminHomePage.php" style="text-decoration:none !important; color:inherit">Paws and Tails</a>
+            <i class="bi bi-x text-secondary" style="font-size:40px; cursor:pointer; float: right; text-shadow:none;" onclick="history.go(-1);"></i>
         </h1>
     </header>
     <?php

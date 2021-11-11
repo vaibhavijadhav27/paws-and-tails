@@ -27,7 +27,7 @@ if (isset($_POST) && !empty($_FILES)) {
   } elseif (empty($desc)) {
     $showError = "Description cannot be empty!";
   } else {
-    $targetDir = "../assets/dogs/adopt/";
+    $targetDir = "../assets/requests/adopt/";
     $fileName = basename($_FILES["image"]["name"]);
     $targetFilePath = $targetDir . $fileName;
     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
@@ -37,7 +37,8 @@ if (isset($_POST) && !empty($_FILES)) {
       if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
         include('../DataBase/connection.php');
         $user = $_SESSION['user']['name'];
-        $sql = "INSERT INTO `dog_req` (`name`, `breed`, `age`, `gender`,`type`, `photo`,`description`,`price`,`postedby`) VALUES ('$name','$breed', '$age', '$gender','$type', '" . $fileName . "','$desc','','$user')";
+        $useremail = $_SESSION['user']['email'];
+        $sql = "INSERT INTO `dog_req` (`name`, `breed`, `age`, `gender`,`type`, `photo`,`description`,`price`,`postedby`,`postedemail`) VALUES ('$name','$breed', '$age', '$gender','$type', '" . $fileName . "','$desc','','$user','$useremail')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
           $showAlert = true;
@@ -78,7 +79,8 @@ if (isset($_POST) && !empty($_FILES)) {
       <icon style="padding-right:10px ">
         <img src="../assets/snoopy2.png" style="width:6% ;">
       </icon>
-      Paws and Tails
+      <a href="UserHomePage.php" style="text-decoration:none !important; color:inherit">Paws and Tails</a>
+      <i class="bi bi-x text-secondary" style="font-size:40px; cursor:pointer; float: right; text-shadow:none;" onclick="history.go(-1);"></i>
     </h1>
   </header>
   <?php
@@ -88,6 +90,7 @@ if (isset($_POST) && !empty($_FILES)) {
         <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
         </button>
     </div> ';
+    header("refresh: 2; url = ./UserAdopt.php");
   }
   if ($showError) {
     echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -104,8 +107,8 @@ if (isset($_POST) && !empty($_FILES)) {
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
 
-        <input class="btn btn-secondary btn-md round" onclick="location.href = 'AdoptionForm.html'" type="reset" value="Adoption" />
-        <input class="btn btn-light btn-sm round" onclick="location.href = 'FosterForm.html'" type="reset" value="Foster" />
+        <input class="btn btn-secondary btn-md round" onclick="location.href = 'AdoptionForm.php'" type="reset" value="Adoption" />
+        <input class="btn btn-light btn-sm round" onclick="location.href = 'FosterForm.php'" type="reset" value="Foster" />
       </div>
       <div class="text-center">
         <h2>Request to put up Dog for Adoption</h2>

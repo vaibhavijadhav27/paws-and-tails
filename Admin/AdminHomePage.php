@@ -1,10 +1,13 @@
+<?php
+session_start();
+?>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paws and Tails | Get a Dog</title>
+  <title>Paws and Tails | Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet" />
@@ -15,18 +18,79 @@
   <link rel="stylesheet" href="../style/style.css">
   <script src="https://kit.fontawesome.com/2c558ff8c9.js" crossorigin="anonymous"></script>
   <style>
-    .wrap {
+    /* .wrap {
       display: grid;
       grid-template-columns: repeat(2, 2fr);
       column-gap: 30%;
       row-gap: 50px;
       grid-auto-rows: minmax(100, auto);
+    } */
+
+    .wrapcard {
+
+      display: grid;
+      grid-template-columns: repeat(2, 2fr);
+      column-gap: 2%;
+      row-gap: 2%;
+      grid-auto-rows: minmax(100, auto);
+
     }
 
     .wrapper {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: minmax(100, auto);
+    }
+
+    .card {
+      position: relative;
+      width: 17rem;
+      height: 22rem;
+      border-radius: 20px;
+      background-position: center center;
+      overflow: hidden;
+    }
+
+    /* Assigning properties to inner
+            content of card  */
+    .card__inner {
+      background-color: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: 1;
+      opacity: 0;
+      padding: 2rem 1.3rem 2rem 2rem;
+      transition: all 0.6s ease 0s;
+    }
+
+    /* On hovering card opacity of
+            content must be 1*/
+    .card:hover .card__inner {
+      opacity: 1;
+
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+    }
+
+    .card__inner p {
+      overflow-y: scroll;
+      height: 87%;
+      padding-right: 1rem;
+      font-weight: 200;
+      line-height: 2.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .wrapper>.card>img {
+      height: 50%;
+      object-fit: contain;
+      margin-top: 10px
     }
   </style>
 </head>
@@ -37,7 +101,7 @@
       <icon style="padding-right:10px ">
         <img src="../assets/snoopy2.png" style="width:6% ;">
       </icon>
-      Paws and Tails
+      <a href="AdminHomePage.php" style="text-decoration:none !important; color:inherit">Paws and Tails</a>
     </h1>
   </header>
 
@@ -47,14 +111,14 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex">
+        <form class="d-flex" method="post" action="./AdminSearchProduct.php">
           <div class="mb-1 mt-3 ml-5 input-group">
             <span class="input-group-text">
               <i class="fas fa-search text-secondary"></i>
             </span>
-            <input type="search" id="search" name="search" class="form-control" placeholder="search here" style="font-style:italic" />
+            <input type="text" name="user_query" class="form-control" placeholder="search here" style="font-style:italic" />
           </div>
-          <button class="mb-1 mt-3 btn btn-outline-secondary" type="submit">Search</button>
+          <button class="mb-1 mt-3 btn btn-outline-secondary" type="submit" name="searchHome">Search</button>
         </form>
         <ul class="nav nav-pills me-auto mb-2 mb-lg-0" style="margin-left:20%">
           <li class="nav-item px-3">
@@ -68,14 +132,14 @@
             <a class="nav-link " href="./AdminGYD.php">Get a dog</a>
           </li>
           <li class="nav-item px-3">
-            <a class="nav-link " href="./AdminHT.html">Health and Train</a>
+            <a class="nav-link " href="./AdminHT.php">Health and Train</a>
           </li>
           <li class="nav-item px-3">
             <a class="nav-link" href="./AdminAccount.php"> <i class="material-icons text-secondary md-24">account_circle</i>
             </a>
           </li>
           <li class="nav-item px-3">
-            <a class="nav-link" href="./AdminManageAccount.html"><i class="material-icons text-secondary md-24">manage_accounts</i>
+            <a class="nav-link" href="./AdminManageAccount.php"><i class="material-icons text-secondary md-24">manage_accounts</i>
             </a>
           </li>
 
@@ -84,9 +148,9 @@
       </div>
     </div>
   </nav>
-  <img src="../assets/home.png" style="width:100%; margin-top:2%;margin-bottom:2%">
+  <img src="../assets/home2.png" style="width:100%; margin-bottom:2%">
   <?php
-  session_start();
+
   if (!empty($_SESSION['admin'])) {
     $productsql = "select * from `dog_products` order by dproduct_id DESC LIMIT 3";
     include('../DataBase/connection.php');
@@ -96,26 +160,28 @@
 
 
   ?>
-      <h3>What's New?</h3>
+      <h3 style="position: relative;top: 5%; margin-left:3% ; text-decoration: underline;"><b>What's New?</b></h3>
       <div class="wrapper" style="position: relative; width:1000px;top:10%;left:15% ;">
 
         <?php
         while ($row = mysqli_fetch_assoc($result)) {
-          $image = !empty($row['photo']) ? "../assets/products/" . $row['photo'] : "https://via.placeholder.com/50.png/09f/666";
+          $image = !empty($row['photo']) ? "../assets/products/" . $row['photo'] : "https://www.arraymedical.com/wp-content/uploads/2018/12/product-image-placeholder.jpg";
 
         ?>
 
-          <div class="card" style="width: 15em;">
+          <div class="card">
             <img src="<?php echo $image; ?>" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Product: <?php echo $row['name'] ?></h5>
-              <p class="card-text">Brand: <?php echo $row['brand'] ?></p>
-              <p class="card-text">Price: <?php echo $row['price'] ?></p>
+              <p class="card-title"><b>Product:</b> <?php echo $row['name'] ?></p>
+              <p class="card-text"><b>Brand:</b> <?php echo $row['brand'] ?></p>
+              <p class="card-text"><b>Price:</b> &#8377;<?php echo $row['price'] ?></p>
             </div>
 
-            <div class="card-body">
-              <a href="#" class="card-link">Edit</a>
-              <a href="#" class="card-link">Delete</a>
+            <div class="card__inner d-grid">
+
+              <a class="btn btn-outline-light btn-block" style="height: 50px; margin-top:40%" href='<?php echo 'AdminViewProduct.php?id=' . $row['dproduct_id']; ?>'><b>View</b></a>
+              <a class=" btn btn-outline-light btn-block" style="height: 50px;" href='<?php echo 'AdminAddProductForm.php?id=' . $row['dproduct_id']; ?>'><b>Edit</b></a>
+              <a class=" btn btn-outline-light btn-block" style="height: 50px;" href='<?php echo 'AdminDeleteProduct.php?id=' . $row['dproduct_id']; ?>' onclick=" return confirm('Are you sure you want to delete this product?');"><b>Delete</b></a>
             </div>
           </div>
         <?php
@@ -128,7 +194,7 @@
   }
   ?>
 
-  <h3 style="position: relative; width:1000px;top:30%;left:5% ;"> Educate yourself with useful blogs</h3>
+  <h3 style="position: relative;top: 20%; margin-left:3%; margin-bottom:3%; text-decoration: underline;"><b>Educate yourself with useful Blogs</b></h3>
   <?php
   if (!empty($_SESSION['admin'])) {
     $blogsql = "select * from `blog` order by blog_id DESC";
@@ -138,7 +204,9 @@
 
 
   ?>
-      <div class="wrap" style="position: relative;margin:10%">
+
+
+      <div class="conatiner-md" style="position: absolute;margin:10%">
 
         <?php
         while ($row = mysqli_fetch_assoc($result)) {
@@ -146,8 +214,18 @@
           $image2 = !empty($row['photo2']) ? "../assets/blogs/" . $row['photo2'] : "https://via.placeholder.com/50.png/09f/666";
 
         ?>
-          <img style="width: 30em;" src="<?php echo $image1; ?>">
-          <img style="width: 30em;" src="<?php echo $image2; ?>">
+
+          <div class="row wrapcard">
+
+
+            <img style="width:600px" src="<?php echo $image1; ?>">
+            <img style="width:600px" src="<?php echo $image2; ?>">
+
+
+          </div>
+
+          <a class=" btn btn-danger delete" style="margin-bottom: 5%; margin-left:35%; margin-top:2%;width:30%" href='<?php echo 'AdminDeleteBlog.php?id=' . $row['blog_id'] ?>' onclick="return confirm('Are you sure you want to delete this Blog?')" ;><b>Delete</b></a>
+
 
 
         <?php
@@ -155,7 +233,10 @@
 
         ?>
 
+
       </div>
+
+
   <?php
     }
   }
