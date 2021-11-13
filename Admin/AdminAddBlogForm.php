@@ -79,6 +79,7 @@ if (isset($_POST) && !empty($_FILES)) {
         <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
         </button>
     </div> ';
+        header("location:  ./AdminHomePage.php");
     }
     if ($showError) {
         echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
