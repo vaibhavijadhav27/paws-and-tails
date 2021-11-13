@@ -20,7 +20,9 @@
     <img src="./assets/Start.png" alt="" />
     <h1 style="text-align: center; margin-top:10%">Paws and Tails</h1>
 
-    <?php header("refresh: 3; url = ./User/UserHomePage.php"); ?>
+    <?php
+    header("refresh: 3; url = ./User/UserHomePage.php");
+    ?>
     <!-- <button style="
       position: relative;
       top: 50%;

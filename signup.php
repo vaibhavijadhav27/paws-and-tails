@@ -51,7 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $userinfo = mysqli_fetch_assoc($result1);
             $_SESSION['user'] = $userinfo;
-            header("location: ./User/UserHomePage.php");
+            $request_url = !empty($_SESSION['request_url']) ? $_SESSION['request_url'] : './User/UserHomePage.php';
+            unset($_SESSION['request_url']);
+            header("location: " . $request_url);
           }
         }
       } else {

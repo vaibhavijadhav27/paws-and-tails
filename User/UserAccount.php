@@ -107,7 +107,7 @@ if (mysqli_num_rows($result) > 0) {
 
                                     <?php
 
-                                    $image = "../assets/" . $userInfo['profile'];
+                                    $image = "../assets/users/" . $userInfo['profile'];
 
                                     ?>
                                     <img style="width:150" src="<?php echo $image ?>" alt="" class="rounded-circle" />
