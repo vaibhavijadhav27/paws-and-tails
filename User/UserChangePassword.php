@@ -1,6 +1,9 @@
 <?php
-error_reporting(0);
+ob_start();
 session_start();
+error_reporting(0);
+$showAlert = false;
+$showError = false;
 $user = $_SESSION['user'];
 $userid = $_SESSION['user']['user_id'];
 include '../DataBase/connection.php';

@@ -1,4 +1,8 @@
 <?php
+ob_start();
+session_start();
+error_reporting(0);
+$showAlert = false;
 $showError = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include 'DataBase/connection.php';

@@ -1,6 +1,7 @@
 <?php
-
+ob_start();
 session_start();
+error_reporting(0);
 $showAlert = false;
 $showError = false;
 $userID = !empty($_GET['id']) ? $_GET['id'] : '';

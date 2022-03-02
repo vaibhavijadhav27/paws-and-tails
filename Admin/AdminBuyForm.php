@@ -1,8 +1,9 @@
 <?php
-error_reporting(0);
-?>
-<?php
+ob_start();
 session_start();
+error_reporting(0);
+$showError = false;
+$showAlert = false;
 $productID = !empty($_GET['id']) ? $_GET['id'] : '';
 if (!empty($productID) && is_numeric($productID)) {
   include('../DataBase/connection.php');
@@ -93,7 +94,7 @@ if (isset($_POST) && !empty($_FILES)) {
       }
     } else {
 
-      $sql = "INSERT INTO `dog` (`breed`, `age`,`gender`,`type`, `price`, `description`, `photo`) VALUES ('$breed', '$age','$gender', '$type','$price', '$desc','$photoName')";
+      $sql = "INSERT INTO `dog` (`breed`, `age`,`gender`,`type`, `price`, `description`, `photo`,`name`,`check`) VALUES ('$breed', '$age','$gender', '$type','$price', '$desc','$photoName','','')";
 
       $message = 'New Dog added';
     }

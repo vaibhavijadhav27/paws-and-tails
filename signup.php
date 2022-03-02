@@ -1,4 +1,8 @@
 <?php
+ob_start();
+session_start();
+error_reporting(0);
+$showAlert = false;
 $showError = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include 'DataBase/connection.php';
@@ -10,6 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $cpassword = $_POST['cpassword'];
   $address = $_POST['address'];
   $phone = $_POST['phone'];
+  $suspended = "Select * from `suspend` where email='$email'";
+  $suspendedResult = mysqli_query($conn, $suspended);
+  $suspend = mysqli_num_rows($suspendedResult);
   $already = "Select * from `user` where phone='$phone'";
   $already1 = "Select * from `user` where email='$email'";
   $alreadyresult = mysqli_query($conn, $already);
@@ -36,6 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $showError = "Please enter your address!";
   } elseif ($password != $cpassword) {
     $showError = "Passwords do not match";
+  } elseif ($suspend != 0) {
+    $showError = "Your account has been suspended by the Admin";
   } else {
 
     if (($num1 == 0) && ($num2 == 0)) {
@@ -64,6 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 }
+
 ?>
 
 <!DOCTYPE html>

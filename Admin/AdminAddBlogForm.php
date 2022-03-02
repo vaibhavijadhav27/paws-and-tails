@@ -1,11 +1,9 @@
 <?php
-error_reporting(0);
-?>
-<?php
 ob_start();
 session_start();
-
+error_reporting(0);
 $showError = false;
+$showAlert = false;
 if (isset($_POST) && !empty($_FILES)) {
     $photo1 = $_FILES['image1'];
     $photo2 = $_FILES['image2'];

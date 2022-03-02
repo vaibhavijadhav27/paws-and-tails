@@ -1,9 +1,9 @@
 <?php
-error_reporting(0);
-?>
-<?php
 ob_start();
 session_start();
+error_reporting(0);
+$showAlert = false;
+$showError = false;
 $productID = !empty($_GET['id']) ? $_GET['id'] : '';
 if (!empty($productID) && is_numeric($productID)) {
   include('../DataBase/connection.php');
@@ -103,7 +103,7 @@ if (isset($_POST) && !empty($_FILES)) {
       }
     } else {
 
-      $sql = "INSERT INTO `professionals` (`name`, `age`, `experience`,`phone`,`gender`,`fees`, `photo`,`description`,`type`) VALUES ('$name', '$age', '$experience','$phone','$gender','$fee','" . $fileName . "','$desc','$type')";
+      $sql = "INSERT INTO `professionals` (`name`, `age`, `experience`,`phone`,`gender`,`fees`, `photo`,`description`,`type`,`check`) VALUES ('$name', '$age', '$experience','$phone','$gender','$fee','" . $fileName . "','$desc','$type','')";
       $message = 'New Walker added';
     }
     include('../DataBase/connection.php');

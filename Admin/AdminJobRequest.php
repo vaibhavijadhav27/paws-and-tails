@@ -1,3 +1,8 @@
+<?php
+ob_start();
+session_start();
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +36,7 @@
     <i class="bi bi-x text-secondary pt-2" style="font-size:40px; cursor:pointer; float: right; text-shadow:none;" onclick="history.go(-1);"></i>
     <h3 class="card-header p-4">Job Requests</h3>
     <?php
-    session_start();
+
     if (!empty($_SESSION['admin'])) {
         $reqsql = "select * from `job_req` order by jreq_id DESC ";
         include('../DataBase/connection.php');

@@ -1,5 +1,4 @@
 <?php
-
 // connection
 define('DB_SERVER', 'localhost:3307');
 define('DB_USERNAME', 'root');

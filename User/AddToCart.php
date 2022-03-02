@@ -1,7 +1,12 @@
 <?php
+ob_start();
 session_start();
 error_reporting(0);
 $showAlert = false;
+$showError = false;
+$dogidbuy = '';
+$dogidadopt = '';
+$dogidfoster = '';
 if (empty($_SESSION['user'])) {
     $currentPage = !empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
     $_SESSION['request_url'] = $currentPage;

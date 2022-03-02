@@ -1,7 +1,7 @@
 <?php
+ob_start();
 session_start();
-?>
-<?php
+error_reporting(0);
 include('../DataBase/connection.php');
 if (empty($_SESSION['admin'])) {
     header('Location: ../login.php');

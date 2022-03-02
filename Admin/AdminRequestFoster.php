@@ -1,3 +1,10 @@
+<?php
+ob_start();
+session_start();
+error_reporting(0);
+$showAlert = false;
+$showError = false;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +39,6 @@
     <h3 class="card-header p-4">Requests for Foster</h3>
     <?php
     $type = 'foster';
-    session_start();
     if (!empty($_SESSION['admin'])) {
         $reqsql = "select * from `dog_req` WHERE type='foster' order by dreq_id DESC ";
         include('../DataBase/connection.php');

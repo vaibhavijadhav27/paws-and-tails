@@ -1,7 +1,9 @@
 <?php
+ob_start();
 session_start();
 error_reporting(0);
 $showAlert = false;
+$showError = false;
 if (!empty($_SESSION['user'])) {
     $userid = $_SESSION['user']['user_id'];
     $productid = !empty($_GET['productid']) ? $_GET['productid'] : '';

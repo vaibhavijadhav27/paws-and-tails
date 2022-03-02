@@ -1,3 +1,8 @@
+<?php
+ob_start();
+session_start();
+error_reporting(0)
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +37,7 @@
     <h3 class="card-header p-4">Requests for Adoption</h3>
     <?php
     $type = 'adopt';
-    session_start();
+
     if (!empty($_SESSION['admin'])) {
         $reqsql = "select * from `dog_req` WHERE type='adopt' order by dreq_id DESC ";
         include('../DataBase/connection.php');

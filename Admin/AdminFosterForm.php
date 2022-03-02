@@ -1,13 +1,9 @@
 <?php
-error_reporting(0);
-?>
-<?php
-error_reporting(0);
-?>
-<?php
 ob_start();
 session_start();
-
+error_reporting(0);
+$showAlert = false;
+$showError = false;
 $productID = !empty($_GET['id']) ? $_GET['id'] : '';
 if (!empty($productID) && is_numeric($productID)) {
   include('../DataBase/connection.php');
@@ -101,7 +97,7 @@ if (isset($_POST) && !empty($_FILES)) {
         $message = 'Dog Updated';
       }
     } else {
-      $sql = "INSERT INTO `dog` (`name`, `breed`, `age`, `gender`,`type`, `photo`,`description`,`price`) VALUES ('$name','$breed', '$age', '$gender','$type', '$photoName','$desc','$payment')";
+      $sql = "INSERT INTO `dog` (`name`, `breed`, `age`, `gender`,`type`, `photo`,`description`,`price`,`check`) VALUES ('$name','$breed', '$age', '$gender','$type', '$photoName','$desc','$payment','')";
       $message = 'New Dog added';
     }
     include('../DataBase/connection.php');

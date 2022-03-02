@@ -1,7 +1,9 @@
 <?php
+ob_start();
 session_start();
-?>
-<?php
+error_reporting(0);
+$showAlert = false;
+$showError = false;
 include('../DataBase/connection.php');
 if (empty($_SESSION['user'])) {
     $currentPage = !empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
