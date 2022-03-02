@@ -6,9 +6,7 @@ Paws and Tails provides an e-commerce platform for getting a dog or buying produ
 
 This application was created as a Mini Project in web development for Semester-5 IT of MU.
 
-#### Hosted using 000webhost.com :
-
-<a href="http://pawsandtailsproject.000webhostapp.com/" target="_blank">Paws and Tails</a>
+#### Hosted using 000webhost.com : <a href="http://pawsandtailsproject.000webhostapp.com/" target="_blank">Paws and Tails</a>
 
 ## Users of System :
 
@@ -30,7 +28,7 @@ In this module users or admin can register or login by entering their profile in
 
 Admin panel for system administrators. They can add, edit and delete - Blogs, Dog Products, Dogs - for selling, adopting and fostering, Professionals like vets, trainers, caretakers and walkers. Admin can also accept or reject the requests received from users for adoption/foster or any job request. Admin can also delete or suspend users if there occurs any problem.
 
-### User :
+#### User :
 
 In the User panel, users can view or buy the Blogs, Dog Products, Dogs for buying, adopting or fostering and Professionals like vets, walkers, trainers and caretakers to hire them. Not only this but also user have flexibility to put a request to adopt or foster the dog and professionals for their jobs by entering all the details of the respective category. So that admin can review the user request and accept or reject dog for adoption/foster or professionals for their job application.
 
