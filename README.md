@@ -48,4 +48,4 @@ Xampp Server
 
 ## EDITOR USED:
 
-VS code
+VS Code
