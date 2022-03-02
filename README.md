@@ -6,15 +6,15 @@ Paws and Tails provides an e-commerce platform for getting a dog or buying produ
 
 This application was created as a Mini Project in web development for Semester-5 IT of MU.
 
-## Hosted at :
+#### Hosted using 000webhost.com :
 
-<a href="http://pawsandtailsproject.000webhostapp.com/">Paws and Tails</a>
+<a href="http://pawsandtailsproject.000webhostapp.com/" target="_blank">Paws and Tails</a>
 
 ## Users of System :
 
 #### 1. Administrator :
 
-The roles of the administrators is to : 1. Add - blogs, dog products, dogs and professionals 2. Edit the details of products, dogs and professionals 3. Delete blogs, products, dogs and professionals. 4. Admin can also respond to requests received from users. 5. Manage users - Delete or suspend users if required
+The roles of the administrators is to : 1. Add - blogs, dog products, dogs and professionals 2. Edit the details of products, dogs and professionals 3. Delete blogs, products, dogs and professionals. 4. Admin can also respond to requests received from users. 5. Manage users - Delete or suspend users if required.
 
 #### 2. User :
 
